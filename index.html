@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>fangdajing</title>
+		<style type="text/css">
+		
+			.divP{
+				width: 1000px;
+				height: 300px;
+				margin: 0 auto;
+				display: flex;
+				margin-top: 100px;;
+			}
+			.left{
+				width: 500px;
+				height: 300px;
+				background:url(img/yanlingji.jpg);
+				background-size: 100%,100%;
+			}
+			.right{
+				width: 500px;
+				height: 300px;
+				background:url(img/yanlingji.jpg);
+				background-size: 500% 500%;
+				display: none;
+			}
+			.zhezhao{
+				width: 100px;
+				height: 60px;
+				background-color: rgba(255,252,89,0.3);
+				display: none;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="divP">
+			<div class="left">
+				<div class="zhezhao"></div>	
+			</div>
+			<div class="right"></div>	
+		</div>
+		<script type="text/javascript">
+			var divP = document.querySelector(".divP");
+			var left = document.querySelector(".left");
+			var right = document.querySelector(".right");
+			var zhezhao = document.querySelector(".zhezhao");
+			
+			left.addEventListener("mouseenter",function(){
+				zhezhao.style.display="block";
+				right.style.display="block";
+			});
+			left.addEventListener("mouseleave",function(){
+				zhezhao.style.display="none";
+				right.style.display="none";
+			});
+			left.addEventListener("mousemove",function(e){
+				x = (e.pageX-divP.offsetLeft)-50;
+				y = (e.pageY-divP.offsetTop)-30;
+				x<0?x=0:x;
+				x>400?x=400:x;
+				y<0?y=0:y;
+				y>240?y=240:y;
+				zhezhao.style.transform = "translateX("+x+"px)"+ "translateY("+y+"px)";
+		
+				right.style.backgroundPositionX =-(5*x)+"px";
+				right.style.backgroundPositionY =-(5*y)+"px";
+			});
+		</script>
+	</body>
+</html>
